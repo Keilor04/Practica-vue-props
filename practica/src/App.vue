@@ -1,22 +1,31 @@
 <script setup>
 import { RouterLink, RouterView } from 'vue-router'
 import HelloWorld from './components/HelloWorld.vue'
+
+// Se importan los componentes Padre, Vista y Editor
+import Padre from './components/Padre.vue'
+import Vista from './components/Vista.vue'
+import Editor from './components/Editor.vue'
+
+
 </script>
 
 <template>
   <header>
     <img alt="Vue logo" class="logo" src="@/assets/logo.svg" width="125" height="125" />
 
+<!-- La clase wrapper es para centrar el contenido -->
+
     <div class="wrapper">
       <HelloWorld msg="You did it! " />
-
+      <!-- Se agrega el componente Padre al template -->
+      <Padre />
       <nav>
         <RouterLink to="/">Home</RouterLink>
         <RouterLink to="/about">About</RouterLink>
       </nav>
     </div>
   </header>
-
   <RouterView />
 </template>
 
