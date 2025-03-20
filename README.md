@@ -1,3 +1,5 @@
+Práctica-Vue-Props
+<hr/>
 Parte 1
 - crear un repositorio personal en github
 - instalar vue nuevamente
