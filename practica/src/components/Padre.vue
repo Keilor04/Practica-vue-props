@@ -1,6 +1,54 @@
 <template>
-   <h1>Padre</h1>
+  <div class="container">
+    <div>
+    <h2>Componente Padre</h2>
+    <componente-editor v-on:mensaje-escrito="recibirmensaje" />
+    <componente-vista :mensajeparamostrar="mensajedelpadre" />
+  </div>
+  
+    <h1>{{ titulo }}dvd</h1>
+    <!-- Se usa v-on para utilizar el evento emitido desde el componente hijo
+    y a su vez igualarlo a la funcion Saludar de metodos -->
+    <componente-editor v-on:Mostrarsaludo="Saludar" />
+    <componente-vista :textoavista="saludo"/>
+    
+    <!-- se usa v-bind para hacer llamado del componente hijo -->
+
+ 
+  </div>
 </template>
+
+<script>
+// Se importa el componente hijo llamado Editor para usarlo en el componente padre llamado Padre
+import Editor from './Editor.vue'
+import Vista from './Vista.vue'
+
+export default {
+  data() {
+    return {
+      titulo: 'Componente Padre',
+      titulo2: 'Ingrese texto',
+      saludo: '',
+      mensajedelpadre: '',
+    }
+  },
+  components: {
+    'componente-editor': Editor,
+    'componente-vista': Vista,
+  },
+  methods: {
+  Saludar() {
+    this.saludo = 'Texto desde editor a vista';
+  },
+
+  recibirmensaje(mensaje) {
+    this.mensajedelpadre = mensaje;
+  }
+  },
+ 
+}
+</script>
+
 
 <style scoped>
 .item {

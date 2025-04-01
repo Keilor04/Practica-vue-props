@@ -2,12 +2,8 @@
 import { RouterLink, RouterView } from 'vue-router'
 import HelloWorld from './components/HelloWorld.vue'
 
-// Se importan los componentes Padre, Vista y Editor
+// Se importan los componentes Padre, para que puedan ser usados en el template
 import Padre from './components/Padre.vue'
-import Vista from './components/Vista.vue'
-import Editor from './components/Editor.vue'
-
-
 </script>
 
 <template>
@@ -18,7 +14,7 @@ import Editor from './components/Editor.vue'
 
     <div class="wrapper">
       <HelloWorld msg="You did it! " />
-      <!-- Se agrega el componente Padre al template -->
+      <!-- Se agrega el componente Padre, Vista y Editor al template -->
       <Padre />
       <nav>
         <RouterLink to="/">Home</RouterLink>

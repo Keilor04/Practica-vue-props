@@ -1,6 +1,38 @@
 <template>
- <h1>Vista</h1>
+  <div>
+    <hr>
+    <h3>{{ tituloVista }}</h3>
+    <p>Mensaje de Editor:{{ mensajeparamostrar }}</p>
+    <div>
+      <br />
+      <p>Mensaje: {{ textoavista }}</p>
+    </div>
+  </div>
 </template>
+
+<script>
+export default {
+  //Props sirve para recibir datos del componente Padre
+  props: {
+    //Se recibe el texto del componente Padre
+    textoAVisualizar: {
+      type: String,
+    },
+    textoavista: {
+      type: String, //string porque se recibe texto del componente hijo Editor para mostrarlo en el hijo vista
+    },
+    mensajeparamostrar: {
+      type: String,
+    },
+  },
+  data() {
+    return {
+      tituloVista: 'Componente hijo-->Vista',
+    }
+  },
+}
+</script>
+
 
 <style scoped>
 .item {

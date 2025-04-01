@@ -1,6 +1,54 @@
 <template>
-   <h1>Editor</h1>
+  <div>
+    <hr>
+    <h3>{{ tituloeditor }}</h3>
+    <div>
+    <input type="text" :value="mensajeescrito" v-on:input="actualizarmensajeescrito" v-on:keyup.enter="enviarmensaje">
+    <button v-on:click="enviarmensaje">Enviar mensaje</button>
+  </div>
+    <button v-on:click="emitirEvento">Mostrar mensaje en componente vista</button>
+    <hr> 
+  </div>
 </template>
+
+<script>
+export default {
+  //Props sirve para recibir datos del componente Padre
+  props: {
+    textoAEditar: {
+      type: String, //string porque se recibe texto del componente Padre
+    },
+    
+  },
+
+  data() {
+    return {
+      mensajeescrito: '',
+      tituloeditor: 'Componente hijo-->Editor',
+    }
+  },
+  methods: {
+    //emitirEvento sirve para emitir un evento al componente padre
+    //para que el padre pueda recibir el evento y mostrarlo en el hijo vista
+    //en este caso se emite el evento Mostrarsaludo
+    emitirEvento() {
+      this.$emit('Mostrarsaludo') // Emitimos el evento con un dato
+    },
+
+    actualizarmensajeescrito(event) {
+      this.mensajeescrito = event.target.value; // evento.target.value es el valor del input
+    },
+    enviarmensaje() {
+      if (this.mensajeescrito.trim() !== '') {
+        this.$emit('mensaje-escrito', this.mensajeescrito);
+        this.mensajeescrito = ''; // Limpiar el input después de enviar
+      }
+    }
+  },
+}
+</script>
+
+
 
 <style scoped>
 .item {
